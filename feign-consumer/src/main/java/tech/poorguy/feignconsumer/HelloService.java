@@ -1,16 +1,19 @@
 package tech.poorguy.feignconsumer;
 
 import org.springframework.cloud.openfeign.FeignClient;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
-/**
- * @author poorguy
- * @version 0.0.1
- * @E-mail 494939649@qq.com
- * @created 2019/2/22
- */
+
 @FeignClient("hello-service")
 public interface HelloService {
     @RequestMapping("/hello")
     String hello();
+    @RequestMapping(value = "/hello1", method = RequestMethod.GET)
+    String hello(@RequestParam("name") String name);
+
+    @RequestMapping(value = "/hello2", method = RequestMethod.GET)
+    Book hello(@RequestHeader("name") String name, @RequestHeader("author") String author, @RequestHeader("price") Integer price);
+
+    @RequestMapping(value = "/hello3", method = RequestMethod.POST)
+    String hello(@RequestBody Book book);
 }

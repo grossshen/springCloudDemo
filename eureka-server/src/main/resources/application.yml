@@ -1,0 +1,27 @@
+#spring:
+#  application:
+#    name: eureka-service
+server:
+  port: 8000
+
+# only one eureka server setting
+eureka:
+  client:
+    register-with-eureka: false
+    fetch-registry: false
+
+#i don't know why should man set like that
+logging:
+  level:
+    com:
+      netflix:
+        eureka: OFF
+        discovery: OFF
+---
+spring:
+     profiles: development
+
+
+---
+spring:
+     profiles: production

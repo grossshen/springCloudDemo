@@ -1,0 +1,36 @@
+server:
+  port: 8020
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://poorguy.tech:8000/eureka
+
+
+spring:
+  application:
+    name: auth-server
+  jpa:
+    open-in-view: true #unknown
+    database: POSTGRESQL
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+  datasource:
+    platform: postgres #unknown
+    url: jdbc:postgresql://47.98.129.157:5432/auth
+    data-username: postgres
+    data-password: root
+    driver-class-name: org.postgresql.Driver
+  redis:
+    host: 47.98.129.157
+    password: root
+    port: 6379
+    timeout: 10000
+    database: 0 #配置redis的分片
+    lettuce:
+      pool:
+        max-active: 8
+        max-wait: -1 #最大阻塞等待时间
+        max-idle: 8
+        min-idle: 0
